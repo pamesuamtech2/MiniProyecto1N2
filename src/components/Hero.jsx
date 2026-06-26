@@ -1,5 +1,6 @@
 export default function Hero() {
   return (
+    
     <div 
       className="relative bg-gray-900 bg-opacity-70 bg-blend-overlay rounded-2xl p-8 md:p-16 mb-12 flex flex-col items-start justify-center overflow-hidden"
       style={{ 

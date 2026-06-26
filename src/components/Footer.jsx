@@ -10,8 +10,8 @@ export default function Footer() {
           
           {/* Columna 1: Logo y descripción */}
           <div>
-            <Link to="/" className="text-2xl font-black tracking-tighter text-gray-900 flex items-center gap-2 mb-4">
-              <span className="text-blue-600">🛍️</span> LUXE.
+            <Link to="/" className="text-2xl font-black tracking-tighter text-blue-600 flex items-center gap-2 mb-4">
+              <span>🛍️</span> LUXE
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed">
               Your one-stop destination for premium lifestyle products, from jewelry to electronics. Quality guaranteed.

@@ -2,20 +2,41 @@ import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import SearchBar from './SearchBar';
+import CategoryGrid from './CategoryGrid'
 
-export default function Header({ searchTerm, setSearchTerm }) {
+
+
+export default function Header({ searchTerm, setSearchTerm, products }) {
   const { cart, removeFromCart } = useContext(CartContext);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
         
         {/* LOGO */}
-        <Link to="/" className="text-2xl font-black tracking-tighter text-gray-900 flex items-center gap-2">
-          <span className="text-blue-600 text-2xl">🛍️</span> LUXE.
+        <Link to="/" className="text-2xl font-black tracking-tighter text-blue-600 flex items-center gap-2">
+          <span className="text-blue-600 text-2xl">🛍️</span> LUXE
         </Link>
 
+        {/*Categories Button*/}
+        <div className="relative">
+          <button
+onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
+    className="bg-gray-100 text-gray-800 px-4 py-2 rounded-full hover:bg-blue-50 hover:text-blue-600 transition-all font-semibold"
+  >
+    📚 Categories
+  </button>
+
+  {isCategoriesOpen && (
+    <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-[90vw] max-w-4xl bg-white rounded-xl shadow-2xl border border-gray-100 z-50 p-6">
+      <CategoryGrid products={products} />
+    </div>
+  )}
+</div>
+        
         {/* NAV */}
         <nav className="hidden md:flex gap-6 font-medium text-sm text-gray-500">
           <Link to="/products/category/electronics" className="hover:text-black">Electronics</Link>

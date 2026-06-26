@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import ProductPage from './pages/ProductPage'
@@ -9,9 +9,20 @@ import Header from './components/Header';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [products, setProducts] = useState([]);
+  
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(data => setProducts(data))
+      .catch(err => console.error('Error al cargar productos:', err));
+  }, []);
+  
   return (
     <>
-    <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+    <Header searchTerm={searchTerm} 
+    setSearchTerm={setSearchTerm}
+     products={products} />
     <Routes>
       <Route path="/" element={<Home searchTerm={searchTerm} />} />
       <Route path="/products/category/:category" element={<Home searchTerm={searchTerm} />} />

@@ -4,16 +4,15 @@ export default function CategoryGrid({ products }) {
   if (!products || products.length === 0) return null;
 
   const uniqueCategoryNames = [...new Set(products.map(p => p.category))];
-
   const categories = uniqueCategoryNames.map((categoryName, index) => {
-    // Buscamos el primer producto que coincida con esta categoría
+
     const firstProductOfCategory = products.find(p => p.category === categoryName);
     
     return {
       id: index,
       name: categoryName, 
       path: categoryName,
-      image: firstProductOfCategory ? firstProductOfCategory.image : ''
+      image: firstProductOfCategory ? firstProductOfCategory.image : '' 
     };
   });
 
